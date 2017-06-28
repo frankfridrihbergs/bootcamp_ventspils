@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.bootcamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.Books;
-import com.example.demo.BooksRepository;
+import com.bootcamp.Books;
+import com.bootcamp.BooksRepository;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/book") // This means URL's start with /book (after Application path)

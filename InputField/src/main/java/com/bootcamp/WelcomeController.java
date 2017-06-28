@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.bootcamp;
 
 import java.util.Map;
 

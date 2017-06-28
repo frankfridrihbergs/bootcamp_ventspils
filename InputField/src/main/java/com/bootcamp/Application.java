@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.bootcamp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,14 +7,14 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 
 @SpringBootApplication
-public class InputFieldApplication extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
 	
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(InputFieldApplication.class);
+        return application.sources(Application.class);
     }
 
 	public static void main(String[] args) {
-		SpringApplication.run(InputFieldApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }

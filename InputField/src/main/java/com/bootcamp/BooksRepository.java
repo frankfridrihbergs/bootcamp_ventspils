@@ -1,8 +1,8 @@
-package com.example.demo;
+package com.bootcamp;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.demo.Books;
+import com.bootcamp.Books;
 
 
 public interface BooksRepository extends CrudRepository<Books, Long> {
