@@ -1,5 +1,6 @@
 package com.bootcamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,16 +11,29 @@ import javax.persistence.Table;
 public class Books {
 	
 	@Id
+	@Column(name = "title")
 	private String title;
 	
+	@Column(name = "isbn")
 	private String isbn;
+	
+	@Column(name = "author")
 	private String author;
+	
+	@Column(name = "book_condition")
 	private String condition;
 	
-	private int year;
-	private int count;
+	@Column(name = "year")
+	private Integer year;
 	
-	private double rating;
+	@Column(name = "book_count")
+	private Integer count;
+	
+	@Column(name = "rating")
+	private float rating;
+	
+	@Column(name = "pic_url")
+	private String pic_url;
 
 	public String getTitle() {
 		return title;
@@ -57,7 +71,7 @@ public class Books {
 		return year;
 	}
 
-	public void setYear(int year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 
@@ -65,7 +79,7 @@ public class Books {
 		return count;
 	}
 
-	public void setCount(int count) {
+	public void setCount(Integer count) {
 		this.count = count;
 	}
 
@@ -73,8 +87,16 @@ public class Books {
 		return rating;
 	}
 
-	public void setRating(double rating) {
+	public void setRating(float rating) {
 		this.rating = rating;
 	}
-	
+
+	public String getPic_url() {
+		return pic_url;
+	}
+
+	public void setPic_url(String pic_url) {
+		this.pic_url = pic_url;
+	}
+
 }

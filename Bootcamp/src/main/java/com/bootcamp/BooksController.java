@@ -21,18 +21,19 @@ public class BooksController {
 	@GetMapping(path="/add") // Map ONLY GET Requests
 	public @ResponseBody String addNewBook (@RequestParam String title
 			, @RequestParam String isbn, @RequestParam String author,
-			@RequestParam String condition, @RequestParam int year, @RequestParam int count, @RequestParam double rating) {
+			@RequestParam String condition, @RequestParam int year, @RequestParam int count, @RequestParam float rating, @RequestParam String pic_url) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 
 		Books book = new Books();
-		book.setTitle(title);
-		book.setIsbn(isbn);
-		book.setAuthor(author);
 		book.setCondition(condition);
 		book.setCount(count);
-		book.setYear(year);
+		book.setIsbn(isbn);
 		book.setRating(rating);
+		book.setYear(year);
+		book.setTitle(title);
+		book.setAuthor(author);
+		book.setPic_url("asdfg");
 		
 		bookRepository.save(book);
 
