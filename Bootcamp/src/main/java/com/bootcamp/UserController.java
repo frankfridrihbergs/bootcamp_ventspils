@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller  
 public class UserController {
 	
-	@GetMapping(path="/user")
+	/*@GetMapping(path="/user")
 	public @ResponseBody String find (@RequestParam String name) {
 		Mys mys = new Mys();
 		User n = null;
@@ -22,6 +22,6 @@ public class UserController {
 		{
 			return "somthing went wrong";
 		}
-	}
+	}*/
 	
 }
