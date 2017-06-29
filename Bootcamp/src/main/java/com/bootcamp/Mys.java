@@ -2,17 +2,19 @@ package com.bootcamp;
 
 import java.sql.*;
 
-public class Mys {
-   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-   static final String DB_URL = "jdbc:mysql://sql8.freemysqlhosting.net:3306/id2079363_library";
+import org.springframework.web.bind.annotation.RequestParam;
 
-   static final String USER = "sql8182588";
-   static final String PASS = "gBVUqBdkqC";
+public class Mys {
+	   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+	   static final String DB_URL = "jdbc:mysql://sql8.freemysqlhosting.net:3306/id2079363_library";
+
+	   static final String USER = "sql8182588";
+	   static final String PASS = "gBVUqBdkqC";
    Connection conn;
    Statement stmt;
 
 
-   public User getSomeInfo(String getWhat,String info, String info2, int info3){
+   public User getSomeInfo(@RequestParam("getWhat") String getWhat,String info, String info2, int info3){
    try{
 	  User user = new User();
       Class.forName("com.mysql.jdbc.Driver");
@@ -33,8 +35,16 @@ public class Mys {
       
       switch (getWhat){
       case "infoByName":
-    	  sql = "SELECT name, surname, password, role FROM users Where name = \"" + info+"\"";
+    	  sql = "SELECT name, username, surname, password, role FROM users Where name = \"" + info+"\"";
     	  break;
+      case "infoBySurname":
+    	  sql = "SELECT name, username, surname, password, role FROM users Where surname = \"" + info+"\"";
+    	  break;
+      case "infoByUsername":
+    	  sql = "SELECT name, username, surname, password, role FROM users Where username = \"" + info+"\"";
+    	  break;
+      default:
+    	 return null;
       }
       
       
