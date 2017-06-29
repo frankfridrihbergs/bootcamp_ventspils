@@ -23,8 +23,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Value("${spring.queries.users-query}")
 	private String usersQuery;
 	
-	@Value("${spring.queries.roles-query}")
-	private String rolesQuery;
+	@Value("${spring.queries.role-query}")
+	private String roleQuery;
+	
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
@@ -32,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		auth.
 			jdbcAuthentication()
 				.usersByUsernameQuery(usersQuery)
-				.authoritiesByUsernameQuery(rolesQuery)
+				.authoritiesByUsernameQuery(roleQuery)
 				.dataSource(dataSource);
 	}
 
@@ -44,7 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/").permitAll()
 			.antMatchers("/login").permitAll()
 			.antMatchers("/registration").permitAll()
-			.antMatchers("/employee").hasAuthority("ADMIN").anyRequest()
+			.antMatchers("/employee").hasAuthority("employee").anyRequest()
 			.authenticated().and().csrf().disable().formLogin()
 			.loginPage("/login").failureUrl("/login?error=true")
 			.defaultSuccessUrl("/employee")
@@ -58,6 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
+		web.debug(true);
 	    web
 	       .ignoring()
 	       .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
