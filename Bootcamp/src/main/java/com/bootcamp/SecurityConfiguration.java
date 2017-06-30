@@ -35,6 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.usersByUsernameQuery(usersQuery)
 				.authoritiesByUsernameQuery(roleQuery)
 				.dataSource(dataSource);
+				
 	}
 
 	@Override
@@ -45,10 +46,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/").permitAll()
 			.antMatchers("/login").permitAll()
 			.antMatchers("/registration").permitAll()
-			.antMatchers("/employee").hasAuthority("employee").anyRequest()
+			.antMatchers("/employeeIndex").hasAuthority("employee").anyRequest()
 			.authenticated().and().csrf().disable().formLogin()
 			.loginPage("/login").failureUrl("/login?error=true")
-			.defaultSuccessUrl("/employee")
+			.defaultSuccessUrl("/employeeIndex")
 			.usernameParameter("username")
 			.passwordParameter("password")
 			.and().logout()
@@ -59,10 +60,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.debug(true);
+		//web.debug(true);
 	    web
 	       .ignoring()
-	       .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+	       .antMatchers("/resources/**", "/static/**", "/vendor/**" , "/less/**", "/css/**" , "/js/**", "/img/**");
+	       
 	}
 
 }
