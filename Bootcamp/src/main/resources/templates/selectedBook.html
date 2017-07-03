@@ -3,11 +3,11 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
     <link rel="stylesheet" type="text/css" href="login.css" media="screen" />
     <script src="login.js" type="text/javascript"></script>
     <title>Bootcamp Library</title>
@@ -38,17 +38,17 @@
 <body>
     <div id="logout">
 
-    <a href="index.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
+  <a th:href="@{/login}" href="login.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
      border:none;margin-left:30px;margin-bottom:30px;padding-left:20px;color:white;padding-right:20px;padding-top:10px;padding-bottom:10px;margin-right:10px;margin-top:20px">LOGOUT</a>
-  <a href="userIndex.html"style="margin-top:20px;max-width:80px;width:auto;background-color:black;
+  <a th:href="@{/userIndex}" href="userIndex.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
      border:none;margin-left:30px;margin-bottom:30px;padding-left:20px;color:white;padding-right:20px;padding-top:10px;padding-bottom:10px;margin-right:10px;margin-top:20px;">HOME</a>
-     <center>
+ <center>
         <h2>  </h2>
     </center>
     <div class="selectedbook">
-    <table width=80% height=100%><tr><td width=30%><img src="img/book2.jpg"></td>
-    <td width=50%>Apraksts<br><br><br>
-    <a href="#">SEND REQUEST</a>
+    <table style="width:80% height:100%"><tr><td id="leftcolumn" style="width:50%"><img src="img/book2.jpg"></img></td>
+    <td id = "rightcolumn" style="width:50%;" >Apraksts<br/><br/><br/>
+    <input type="button" onclick="userIndex.html" value="SEND REQUEST"/>
         </td></tr>
     </table>
 
@@ -66,6 +66,7 @@
 
     <!-- Theme JavaScript -->
     <script src="js/creative.min.js"></script>
+    </div>
 </body>
 
 

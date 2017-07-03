@@ -606,7 +606,7 @@ figure:hover{
 }
 
 .selectedbook{
-  max-width:40%;
+  max-width:80%;
   margin-left:auto;
   margin-right:auto;
   position:center;
@@ -701,4 +701,16 @@ hr{
 }
 #111{
   margin-top:0px;
+}
+//pievienoju td konfiguraciju lai apraksts un sendrequest nesaplustu ar gramatas img
+.selectedbook td{
+	display:block;
+}
+
+#leftcolumn{
+	float:left;
+}
+
+#rightcolumn{
+	position:center;
 }
