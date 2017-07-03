@@ -83,12 +83,19 @@ public class Books {
 		this.count = count;
 	}
 
-	public double getRating() {
+	public float getRating() {
 		return rating;
 	}
 
 	public void setRating(float rating) {
-		this.rating = rating;
+		if(rating < 0){
+			this.rating = 0;
+		}else if (rating > 10){
+			this.rating = 10;
+		}
+		else{
+			this.rating = rating;
+		}
 	}
 
 	public String getPic_url() {
