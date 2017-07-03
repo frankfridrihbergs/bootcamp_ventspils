@@ -19,4 +19,8 @@ public interface BooksRepository extends CrudRepository<Books, Long>  {
 	List<Books> getBooksByInfo(@Param("title") String title,@Param("author") String author,
 			@Param("rating") Float rating, @Param("isbn") String isbn);
 	
+	List<Books> findByTitleIgnoreCase(String title);
+	
+	List<Books> findByTitleOrAuthorOrIsbnIgnoreCaseOrRating(String title, String author, String isbn, float rating);
+	
 }
