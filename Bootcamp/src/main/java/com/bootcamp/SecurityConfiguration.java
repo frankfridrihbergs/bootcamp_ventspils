@@ -1,5 +1,10 @@
 package com.bootcamp;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +15,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -19,6 +26,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private DataSource dataSource;
+	
+	@Autowired
+	private AuthSuccessHandler successHandler;
 	
 	@Value("${spring.queries.users-query}")
 	private String usersQuery;
@@ -46,16 +56,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/").permitAll()
 			.antMatchers("/login").permitAll()
 			.antMatchers("/registration").permitAll()
-			.antMatchers("/employeeIndex").hasAuthority("employee").anyRequest()
+			.antMatchers("/employeeIndex").hasAuthority("employee")
+			.antMatchers("/userIndex").hasAuthority("reader").anyRequest()
 			.authenticated().and().csrf().disable().formLogin()
 			.loginPage("/login").failureUrl("/login?error=true")
-			.defaultSuccessUrl("/employeeIndex")
+			.successHandler(successHandler)
+			//.defaultSuccessUrl("/employeeIndex")
 			.usernameParameter("username")
 			.passwordParameter("password")
 			.and().logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/").and().exceptionHandling()
+			.logoutSuccessUrl("/login").and().exceptionHandling()
 			.accessDeniedPage("/access-denied");
+		
 	}
 	
 	@Override
