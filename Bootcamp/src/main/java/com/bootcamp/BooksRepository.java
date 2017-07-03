@@ -1,6 +1,8 @@
 package com.bootcamp;
 
 import java.beans.Transient;
+import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.Query;
@@ -12,11 +14,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BooksRepository extends CrudRepository<Books, Long>  {
 	
-	@Query("Select title from Books where book_condition = :book_condition")
-	String getBook(@Param("book_condition") String book_condition);
+	@Query("select b from Books b where b.title like %:title% and b.author like %:author%" //Will return all books that match criteria (title,author,isbn,rating)
+			+ " and b.rating >= :rating and b.isbn like %:isbn%")
+	List<Books> getBooksByInfo(@Param("title") String title,@Param("author") String author,
+			@Param("rating") Float rating, @Param("isbn") String isbn);
 	
-	@Query("Select isbn from Books where title = :title")
-	String getBookIsbn(@Param("title") String title);
-	
-
 }
