@@ -51,14 +51,19 @@
    
 
             <div class="form">
-                <form class="login-form" action="userIndex.html" method="get">
+                <form class="login-form" th:action="@{/save}" method="get">
                 <input type="text" placeholder="name" name="name"/>
                 <input type="password" placeholder="password" name="password"/>
                 <input type="text" placeholder="username" name="username"/>
+                <label>Select Role : </label>
+                <select name="role">
+  					<option value="reader">Reader</option>
+  					<option value="employee">Employee</option>
+				</select>
                 <button>create</button>
-                <p id="alr"><br> Already registered? </br> <a th:href="@{login}" href="login.html">Sign In</a></p>
+                <!-- <p id="alr"><br> Already registered? </br> <a th:href="@{login}" href="login.html">Sign In</a></p> --> 
+                	<span th:text="${UserSaved}"></span>
                 </form>
-                
             </div>
         </div>
     </div>
