@@ -45,7 +45,7 @@ public class BooksController  {
 		
 		book.setCondition("new");
 		book.setCount(1);
-		book.setIsbn("1234567890123");
+		book.setIsbn(isbn);
 		book.setRating(rating);
 		book.setYear(2012);
 		book.setTitle(title);
