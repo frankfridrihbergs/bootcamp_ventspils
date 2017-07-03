@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bootcamp.Books;
 import com.bootcamp.BooksRepository;
 
-@Controller(value="BooksController")    // This means that this class is a Controller
+@Controller    // This means that this class is a Controller
 @RequestMapping(path="/book") // This means URL's start with /book (after Application path)
 public class BooksController  {
 	
