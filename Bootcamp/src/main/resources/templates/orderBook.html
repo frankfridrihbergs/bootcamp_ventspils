@@ -50,13 +50,9 @@
 </center>
 
 
-<form id = "form2">
+<form id = "form2" class="login-form" action="orderbook.html" method="post" th:action="@{/orderbook}">
     <p id="beforefields" style="margin-top:80px;">TITLE</p>
-<input type="search" placeholder="TYPE TITLE HERE"/>
-<p id="beforefields">AUTHOR</p>
-<input type="search" placeholder="TYPE AUTHOR HERE"/>
-<p id="beforefields">SELECT RATING</p>
-<select id="white">
+
   <option value="1">1 AND HIGHER</option>
   <option value="2">2 AND HIGHER</option>
   <option value="3">3 AND HIGHER</option>
@@ -70,9 +66,9 @@
 
 </select>
 <p id="beforefields">ISBN NUMBER</p>
-<input type="search" placeholder="TYPE ISBN NUMBER HERE"/>
 
- <button type="button" class="btn" style=" margin-top:40px;
+
+ <button type="submit" class="btn" style=" margin-top:40px;
 	padding: 5px;            
 	  
 	border: none;  
