@@ -60,60 +60,16 @@
                     <th>Book isbn number</th>
                 
                 </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1111</td>
+                <tr th:each="sb : ${books}">
+		            <td th:text="${sb.author}"></td>
+		            <td th:text="${sb.title}"></td>
+		            <td >
+				        <form class="login-form" action="#" method="post" th:action="@{/givebook}">
+				        	<input type="submit" th:value="${sb.isbn}" name="isbn"  />
+				        </form>
+		            </td>
+                </tr>
                 
-                </tr>
-                <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1112</td>
-                    
-                </tr>
-                <tr>
-                    <td>Ernst Handel</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1113</td>
-                    
-                </tr>
-                <tr>
-                    <td>Island Trading</td>
-                    <td>Twilight-Midnight sun</td>
-                <td>1114</td>
-                
-                </tr>
-                <tr>
-                    <td>Island Trading</td>
-                    <td>Twilight-Midnight sun</td>
-                <td>1114</td>
-                
-                </tr>
-                <tr>
-                    <td>Island Trading</td>
-                    <td>Twilight-Midnight sun</td>
-                <td>1114</td>
-                
-                </tr>
-                <tr>
-                    <td>Island Trading</td>
-                    <td>Twilight-Midnight sun</td>
-                <td>1114</td>
-                
-                </tr>
-                <tr>
-                    <td>Laughing Bacchus Winecellars</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1115</td>
-                    
-                </tr>
-                <tr>
-                    <td>Magazzini Alimentari Riuniti</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1116</td>
-                
-                </tr>
                 </table>
                 </td>
                 </table>
@@ -147,49 +103,18 @@
                     <td>1111</td>
                 
                 </tr>
-                <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1112</td>
-                    
-                </tr>
-                <tr>
-                    <td>Ernst Handel</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1113</td>
-                    
-                </tr>
-                <tr>
-                    <td>Island Trading</td>
-                    <td>Twilight-Midnight sun</td>
-                <td>1114</td>
-                
-                </tr>
-                <tr>
-                    <td>Laughing Bacchus Winecellars</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1115</td>
-                    
-                </tr>
-                <tr>
-                    <td>Magazzini Alimentari Riuniti</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1116</td>
-                
-                </tr>
                 </table>
                 </td>
                 </table>
 
 <td id="reqlist">
-<form id="givebook">
+<form id="givebook" action="#" th:action="@{/givebook}" method="post">
     <div class="choices">
         <p style="margin-top:80px;">ISBN number</p>
-        <input type="search" placeholder="TYPE ISBN HERE" />
-          <input type="submit" value="TAKE THIS BOOK" />
-</div>
-<br />
-
+		<input type="text"  name="isbn" placeholder="TYPE ISBN HERE"/>
+        <input type="submit" value="TAKE THIS BOOK" />        
+	</div>
+	<br />
 </form>
 </td>
 
