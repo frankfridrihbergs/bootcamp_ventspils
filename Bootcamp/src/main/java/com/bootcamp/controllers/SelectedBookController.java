@@ -25,7 +25,7 @@ public class SelectedBookController {
 	public ModelAndView selectedBook(@RequestParam(value="title")String title){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("book",bookrepository.findFirstByTitleIgnoreCase(title));
-		modelAndView.setViewName("NewFile"); //demo or JAVA
+		modelAndView.setViewName("selectedBook"); //demo or JAVA
 		return modelAndView;
 	}
 	

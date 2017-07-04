@@ -51,7 +51,7 @@
 
 	<div th:each="sb : ${books}">
      	<figure>
-         <a th:href="@{/selectedBook}" href="selectedBook.html">  <img th:src="${sb.pic_url}" width="200" height="350" /></a>
+         <a th:href="@{/selectedBook?title=}+${sb.title}" href="selectedBook.html">  <img th:src="${sb.pic_url}" width="200" height="350" /></a>
        <figcaption th:text="${sb.title + '  ' + sb.author}"><br/>
        		
        </figcaption>
