@@ -1,4 +1,4 @@
-package com.bootcamp;
+package com.bootcamp.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

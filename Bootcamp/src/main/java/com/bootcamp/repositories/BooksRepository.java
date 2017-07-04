@@ -1,4 +1,4 @@
-package com.bootcamp;
+package com.bootcamp.repositories;
 
 import java.beans.Transient;
 import java.util.Iterator;
@@ -10,6 +10,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.bootcamp.models.Books;
+
 
 @Repository
 public interface BooksRepository extends CrudRepository<Books, Long>  {
@@ -20,6 +22,8 @@ public interface BooksRepository extends CrudRepository<Books, Long>  {
 			@Param("rating") Float rating, @Param("isbn") String isbn);
 	
 	List<Books> findByTitleIgnoreCase(String title);
+	
+	Books findFirstByTitleIgnoreCase(String title);
 	
 	List<Books> findByTitleOrAuthorOrIsbnIgnoreCaseOrRating(String title, String author, String isbn, float rating);
 	

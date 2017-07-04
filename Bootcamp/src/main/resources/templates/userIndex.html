@@ -9,7 +9,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <link rel="stylesheet" type="text/css" href="login.css" media="screen" />
-    <script src="login.js" type="text/javascript"></script>
+    <script th:src="@{/js/login.js}" src="../static/js/login.js" type="text/javascript"></script>
     <title>Bootcamp Library</title>
 
     <!-- Bootstrap Core CSS -->
@@ -37,7 +37,7 @@
 </head>
 
     <div id="logout">
-	<a href="index.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
+	<a th:href="@{/login}" href="login.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
      border:none;margin-left:30px;margin-bottom:30px;padding-left:20px;color:white;padding-right:20px;padding-top:10px;padding-bottom:10px;margin-right:10px;margin-top:20px">LOGOUT</a>
    </div>
 
