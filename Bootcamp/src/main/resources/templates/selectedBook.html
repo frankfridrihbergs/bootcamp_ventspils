@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
 
@@ -46,10 +47,23 @@
         <h2>  </h2>
     </center>
     <div class="selectedbook">
-    <table style="width:80% height:100%"><tr><td id="leftcolumn" style="width:50%"><img src="img/book2.jpg"></img></td>
-    <td id = "rightcolumn" style="width:50%;" >Apraksts<br/><br/><br/>
-    <input type="button" onclick="userIndex.html" value="SEND REQUEST"/>
-        </td></tr>
+    <table style="width:80% height:100%">
+    <form class="login-form" method="get" th:action="@{/takebook}">
+    <tr><td id="leftcolumn" style="width:50%"><img src="img/book2.jpg"></img></td>
+    
+    <td id = "rightcolumn" style="width:50%;" th:value="${title}" th:text="${title}" name="title"><br/><br/><br/>
+    
+
+    
+    
+        </td>
+        <td>
+        
+				        	<input type="submit" value="SEND REQUEST" th:value="${title}" name="title" />
+		
+        </td>
+        </tr>
+        </form>
     </table>
 
     </div>
