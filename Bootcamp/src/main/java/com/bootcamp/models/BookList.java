@@ -22,6 +22,9 @@ public class BookList {
 	
 	@Column(name = "isbn")
 	private String isbn;
+	
+	@Column(name = "author")
+	private String author;
 
 	public String getUsername() {
 		return username;
@@ -53,6 +56,14 @@ public class BookList {
 
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	
 	

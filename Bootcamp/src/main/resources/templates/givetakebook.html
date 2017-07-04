@@ -61,7 +61,7 @@
                 
                 </tr>
                 <tr th:each="sb : ${books}">
-		            <!-- <td th:text="${sb.author}"></td>  -->
+		            <td th:text="${sb.username}"></td>
 		            <td th:text="${sb.title}"></td>
 		            <td >
 				        <form class="login-form" action="#" method="post" th:action="@{/givebook}">
@@ -99,7 +99,7 @@
                 
                 </tr>
                 <tr th:each="sb : ${books1}">
-		            <!-- <td th:text="${sb.author}"></td>  -->
+		            <td th:text="${sb.username}"></td>
 		            <td th:text="${sb.title}"></td>
 		            <td >
 				        <form class="login-form" action="#" method="post" th:action="@{/takebook}">
