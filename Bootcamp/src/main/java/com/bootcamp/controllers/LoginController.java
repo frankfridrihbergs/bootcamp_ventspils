@@ -1,4 +1,4 @@
-package com.bootcamp;
+package com.bootcamp.controllers;
 
 import java.util.Map;
 
@@ -13,6 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.bootcamp.services.UsersService;
 
 @Controller
 public class LoginController {

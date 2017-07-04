@@ -1,4 +1,4 @@
-package com.bootcamp;
+package com.bootcamp.handlers;
 
 import java.io.IOException;
 import java.util.Collection;

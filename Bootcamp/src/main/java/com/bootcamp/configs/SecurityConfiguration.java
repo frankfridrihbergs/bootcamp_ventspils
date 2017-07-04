@@ -1,4 +1,4 @@
-package com.bootcamp;
+package com.bootcamp.configs;
 
 import java.io.IOException;
 
@@ -18,6 +18,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.bootcamp.handlers.AuthSuccessHandler;
 
 @Configuration
 @EnableWebSecurity

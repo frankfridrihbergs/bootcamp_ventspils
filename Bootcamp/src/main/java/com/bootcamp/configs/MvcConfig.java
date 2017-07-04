@@ -1,4 +1,4 @@
-package com.bootcamp;
+package com.bootcamp.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,19 +14,13 @@ public class MvcConfig extends WebMvcConfigurerAdapter
 {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/login2").setViewName("login2");
-		registry.addViewController("/availableBooks").setViewName("availableBooks");
+		
 		registry.addViewController("/checkout").setViewName("checkout");
 		registry.addViewController("/debts").setViewName("debts");
 		registry.addViewController("/employeeIndex").setViewName("employeeIndex");
-		registry.addViewController("/givetakebook").setViewName("givetakebook");
 		registry.addViewController("/history").setViewName("history");
-		registry.addViewController("/index").setViewName("index");
 		registry.addViewController("/manage").setViewName("manage");
-		//registry.addViewController("/book/add").setViewName("manage");
-		registry.addViewController("/orderBook").setViewName("orderBook");
-		registry.addViewController("/register").setViewName("register");
-		registry.addViewController("/selectedBook").setViewName("selecteBook");
+		//registry.addViewController("/selectedBook").setViewName("selecteBook");
 		registry.addViewController("/userIndex").setViewName("userIndex");
 		
 	}

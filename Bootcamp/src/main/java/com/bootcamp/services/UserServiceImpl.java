@@ -1,7 +1,10 @@
-package com.bootcamp;
+package com.bootcamp.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.bootcamp.models.Users;
+import com.bootcamp.repositories.UserRepository;
 
 
 @Service("userService")

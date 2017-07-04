@@ -17,6 +17,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.util.Assert;
 
+import com.bootcamp.controllers.BooksController;
+import com.bootcamp.models.Books;
+import com.bootcamp.repositories.BooksRepository;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
