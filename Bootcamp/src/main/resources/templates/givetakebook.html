@@ -61,7 +61,7 @@
                 
                 </tr>
                 <tr th:each="sb : ${books}">
-		            <td th:text="${sb.author}"></td>
+		            <!-- <td th:text="${sb.author}"></td>  -->
 		            <td th:text="${sb.title}"></td>
 		            <td >
 				        <form class="login-form" action="#" method="post" th:action="@{/givebook}">
@@ -72,7 +72,7 @@
                 
                 </table>
                 </td>
-                </table>
+               
 
 <td id="reqlist">
 <form id="givebook">
@@ -85,27 +85,31 @@
 
 </form>
 </td>
+ </table>
 
 <br />
 
 <table id="holder">
     <td id="reqlist" style="width:50%;">
                     <table id="requests">
-                <tr>
+                 <tr>
                     <th>Name</th>
                     <th>Book</th>
                     <th>Book isbn number</th>
                 
                 </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1111</td>
-                
+                <tr th:each="sb : ${books1}">
+		            <!-- <td th:text="${sb.author}"></td>  -->
+		            <td th:text="${sb.title}"></td>
+		            <td >
+				        <form class="login-form" action="#" method="post" th:action="@{/takebook}">
+				        	<input type="submit" th:value="${sb.isbn}" name="isbn"  />
+				        </form>
+		            </td>
                 </tr>
                 </table>
                 </td>
-                </table>
+                
 
 <td id="reqlist">
 <form id="givebook" action="#" th:action="@{/givebook}" method="post">
@@ -117,6 +121,7 @@
 	<br />
 </form>
 </td>
+</table>
 
 <center>
 <h4 id="requests2">BOOKS REQUESTED TO TAKE</h4>

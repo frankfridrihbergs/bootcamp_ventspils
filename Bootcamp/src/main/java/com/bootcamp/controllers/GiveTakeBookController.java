@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bootcamp.models.BookList;
 import com.bootcamp.models.Users;
+import com.bootcamp.repositories.BookListRepository;
 import com.bootcamp.repositories.BooksRepository;
 import com.bootcamp.services.UsersService;
 
@@ -23,9 +25,13 @@ public class GiveTakeBookController {
 	@Autowired
 	private UsersService userService;
 	
+	@Autowired
+	private BookListRepository bookListRepository;
+	
 	@RequestMapping(value={"/givetakebook"}, method = RequestMethod.GET)
 	public String givetakeBook(Model model){
-		model.addAttribute("books", bookRepository.findAll());
+		model.addAttribute("books", bookListRepository.findByBookStatusIgnoreCase("ordered"));
+		model.addAttribute("books1", bookListRepository.findByBookStatusIgnoreCase("take"));
 		
 		return "givetakebook";
 	}
@@ -37,9 +43,13 @@ public class GiveTakeBookController {
 	    String name = auth.getName(); //get logged in username
 	    Users user = userService.findByUsername(name);
 	    
-	    ModelAndView mav = new ModelAndView("givetakebook");
-	    mav.addObject("books", bookRepository.findAll());
-	    mav.setViewName("givetakebook");
+	    BookList bookList = new BookList();
+	    bookListRepository.setBookstatusFor("take", isbn, "dplasis");
+	    
+	    ModelAndView mav = new ModelAndView("redirect:/givetakebook");
+	    mav.addObject("books", bookListRepository.findByBookStatusIgnoreCase("ordered"));
+	    mav.addObject("books1", bookListRepository.findByBookStatusIgnoreCase("take"));
+	    mav.setViewName("redirect:/givetakebook");
 	    if(user == null){
 	    	System.out.println("Error: user is null");
 	    	return mav;
@@ -63,13 +73,19 @@ public class GiveTakeBookController {
 	}
 	
 	@RequestMapping(value="/takebook", method = RequestMethod.POST)
-	public String giveBookByISBN(@RequestParam(value = "isbn") String isbn){
+	public ModelAndView giveBookByISBN(@RequestParam(value = "isbn") String isbn){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    String name = auth.getName(); 		//get logged in username
 	    Users user = userService.findByUsername(name);
+	    bookListRepository.setBookstatusFor("ordered", isbn, "dplasis");
+	    
+	    ModelAndView mav = new ModelAndView("redirect:/givetakebook");
+	    mav.addObject("books", bookListRepository.findByBookStatusIgnoreCase("ordered"));
+	    mav.addObject("books1", bookListRepository.findByBookStatusIgnoreCase("take"));
+	    mav.setViewName("redirect:/givetakebook");
 	    if(user == null){ //check if user exists
 	    	System.out.println("Error: user is null");
-	    	return "givetakebook";
+	    	return mav;
 	    }
 		/*for (Books book : bookRepository.findAll()) {
 			if(book.getIsbn() == isbn ){
@@ -83,6 +99,6 @@ public class GiveTakeBookController {
 				return "givetakebook";
 			}
 		}*/
-		return "givetakebook"; //TODO show message if there isn't book with given isbn number
+		return mav; //TODO show message if there isn't book with given isbn number
 	}
 }
