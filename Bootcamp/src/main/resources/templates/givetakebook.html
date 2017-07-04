@@ -25,7 +25,7 @@
     <link th:href="@{/vendor/magnific-popup/magnific-popup.css}" href="../static/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
 
     <!-- Theme CSS -->
-  <!--  <link href="css/creative.min.css" rel="stylesheet"> -->
+  	<!--  <link href="css/creative.min.css" rel="stylesheet"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,108 +34,114 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
-<body>
-    <div id="logout">
-
-    <a th:href="@{login}" href="login.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
-     border:none;margin-left:30px;margin-bottom:30px;padding-left:20px;color:white;padding-right:20px;padding-top:10px;padding-bottom:10px;margin-right:10px;margin-top:20px">LOGOUT</a>
-  <a th:href="@{employeeIndex}" href="employeeIndex.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
-     border:none;margin-left:30px;margin-bottom:30px;padding-left:20px;color:white;padding-right:20px;padding-top:10px;padding-bottom:10px;margin-right:10px;margin-top:20px;">HOME</a>
-    
-    </div>
-
-    
-<br />
-
-<h4 id="requests2">BOOKS REQUESTED TO GIVE</h4>
-
-<table id="holder">
-    
-    <td id="reqlist" style="width:50%;">
-                    <table id="requests">
-                <tr>
-                    <th>Name</th>
-                    <th>Book</th>
-                    <th>Book isbn number</th>
-                
-                </tr>
-                <tr th:each="sb : ${books}">
-		            <td th:text="${sb.author}"></td>
-		            <td th:text="${sb.title}"></td>
-		            <td >
-				        <form class="login-form" action="#" method="post" th:action="@{/givebook}">
-				        	<input type="submit" th:value="${sb.isbn}" name="isbn"  />
-				        </form>
-		            </td>
-                </tr>
-                
-                </table>
-                </td>
-                </table>
-
-<td id="reqlist">
-<form id="givebook">
-    <div class="choices">
-        <p style="margin-top:80px;">ISBN number</p>
-        <input type="search" placeholder="TYPE ISBN HERE"/>
-          <input type="submit" value="GIVE THIS BOOK"/>
-</div>
-<br />
-
-</form>
-</td>
-
-<br />
-
-<table id="holder">
-    <td id="reqlist" style="width:50%;">
-                    <table id="requests">
-                <tr>
-                    <th>Name</th>
-                    <th>Book</th>
-                    <th>Book isbn number</th>
-                
-                </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Twilight-Midnight sun</td>
-                    <td>1111</td>
-                
-                </tr>
-                </table>
-                </td>
-                </table>
-
-<td id="reqlist">
-<form id="givebook" action="#" th:action="@{/givebook}" method="post">
-    <div class="choices">
-        <p style="margin-top:80px;">ISBN number</p>
-		<input type="text"  name="isbn" placeholder="TYPE ISBN HERE"/>
-        <input type="submit" value="TAKE THIS BOOK" />        
-	</div>
-	<br />
-</form>
-</td>
-
-<center>
-<h4 id="requests2">BOOKS REQUESTED TO TAKE</h4>
-</center>
-    
-    <!-- jQuery -->
-    <script th:src="@{/vendor/jquery/jquery.min.js}" src="../static/vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}" src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script th:src="@{/vendor/scrollreveal/scrollreveal.min.js}" src="../static/vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script th:src="@{/vendor/magnific-popup/jquery.magnific-popup.min.js}" src="../static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script th:src="@{/js/creative.min.js}" src="../static/js/creative.min.js"></script>
-</body>
+	</head>
+	<body>
+	    <div id="logout">
+	
+		    <a th:href="@{login}" href="login.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
+		     border:none;margin-left:30px;margin-bottom:30px;padding-left:20px;color:white;padding-right:20px;padding-top:10px;padding-bottom:10px;margin-right:10px;margin-top:20px">LOGOUT</a>
+		  	<a th:href="@{employeeIndex}" href="employeeIndex.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
+		     border:none;margin-left:30px;margin-bottom:30px;padding-left:20px;color:white;padding-right:20px;padding-top:10px;padding-bottom:10px;margin-right:10px;margin-top:20px;">HOME</a>
+		    
+	    </div>
+	
+	    
+		<br />
+		
+		<h4 id="requests2">BOOKS REQUESTED TO GIVE</h4>
+		
+		<table id="holder">
+		    
+		    <td id="reqlist" style="width:50%;">
+		    	<table id="requests">
+		        	<tr>
+		            	<th>Name</th>
+		                <th>Book</th>
+		                <th>Book isbn number</th>
+		                
+		        	</tr>
+		        	<!-- goes through list of books and prints out data -->
+		            <tr th:each="sb : ${books}"> 
+				    	<td th:text="${sb.author}"></td> 
+				        <td th:text="${sb.title}"></td>
+				        <td >
+					        <!-- makes button what sends books isbn number to /givebook path -->
+							<form class="login-form" action="#" method="post" th:action="@{/givebook}">
+								<input type="submit" th:value="${sb.isbn}" name="isbn"  /> 
+							</form>
+				    	</td>
+		            </tr>   
+				</table>
+			</td>
+		</table>
+		
+		<div th:if="${param.user}" > 
+			<p style="margin-top:80px;">You aren't logged in.</p>
+			<a href="/bootcamp/login"> <input type="button" value="Log in"/> </a>
+		</div>
+		
+		<td id="reqlist">
+		<form id="givebook">
+		    <div class="choices">
+		        <p style="margin-top:80px;">ISBN number</p>
+		        <input type="search" placeholder="TYPE ISBN HERE"/>
+		        <input type="submit" value="GIVE THIS BOOK"/>
+			</div>
+			<br />
+		
+		</form>
+		</td>
+		
+		<br />
+		
+		<table id="holder">
+		    <td id="reqlist" style="width:50%;">
+				<table id="requests">
+		        	<tr>
+		            	<th>Name</th>
+		            	<th>Book</th>
+		             	<th>Book isbn number</th>
+		                
+		             </tr>
+		             <tr>
+		            	 <td>Alfreds Futterkiste</td>
+		             	 <td>Twilight-Midnight sun</td>
+		             	 <td>1111</td>
+		                
+		             </tr>
+				</table>
+			</td>
+		</table>
+		<td id="reqlist">
+			<!-- form for submiting isbn number for giving book to user -->
+			<form id="givebook" action="#" th:action="@{/givebook}" method="post"> 
+			    <div class="choices">
+			        <p >ISBN number</p>
+					<input type="text"  name="isbn" placeholder="TYPE ISBN HERE"/>
+			        <input type="submit" value="TAKE THIS BOOK" />
+				</div>
+				<br />
+			</form>
+		</td>
+		
+		<center>
+			<h4 id="requests2">BOOKS REQUESTED TO TAKE</h4>
+		</center>
+		    
+	    <!-- jQuery -->
+	    <script th:src="@{/vendor/jquery/jquery.min.js}" src="../static/vendor/jquery/jquery.min.js"></script>
+	
+	    <!-- Bootstrap Core JavaScript -->
+	    <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}" src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+	
+	    <!-- Plugin JavaScript -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	    <script th:src="@{/vendor/scrollreveal/scrollreveal.min.js}" src="../static/vendor/scrollreveal/scrollreveal.min.js"></script>
+	    <script th:src="@{/vendor/magnific-popup/jquery.magnific-popup.min.js}" src="../static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	
+	    <!-- Theme JavaScript -->
+	    <script th:src="@{/js/creative.min.js}" src="../static/js/creative.min.js"></script>
+	</body>
 
 
 </html>

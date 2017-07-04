@@ -10,39 +10,52 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@Controller // sets class as controller 
 public class GiveTakeBookController {
 	
-	@Autowired
-	private BooksRepository bookRepository;
+	@Autowired // gets book repository 
+	private BooksRepository bookRepository; 
 	
-	@Autowired
+	@Autowired // gets user repository 
 	private UsersService userService;
 	
-	@RequestMapping(value={"/givetakebook"}, method = RequestMethod.GET)
+	// sets /givetakebook path. Called when using get method
+	@RequestMapping(value={"/givetakebook"}, method = RequestMethod.GET) 
+	// method which will be called by path /givetakebook with method GET
 	public String givetakeBook(Model model){
-		model.addAttribute("books", bookRepository.findAll());
+		//add list of books to model
+		model.addAttribute("books", bookRepository.findAll()); 
+		/*//get logged in user 
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+	    //get logged in user username
+	    String name = auth.getName(); 
+	    //get logged in user data
+	    Users user = userService.findByUsername(name); 
+		model.addAttribute(user.getTeakenBooks());*/
 		
 		return "givetakebook";
 	}
-	
+	//  sets /givebook path. Called when using POST method
 	@RequestMapping(value={"/givebook"}, method = RequestMethod.POST)
+	// binds values isbn, taken from html file, to methods isbn parameter
 	public ModelAndView takeBook(@RequestParam(value = "isbn") String isbn){
-		System.out.println("giving book with isbn: " + isbn);
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String name = auth.getName(); //get logged in username
-	    Users user = userService.findByUsername(name);
-	    
-	    ModelAndView mav = new ModelAndView("givetakebook");
-	    mav.addObject("books", bookRepository.findAll());
-	    mav.setViewName("givetakebook");
-	    if(user == null){
-	    	System.out.println("Error: user is null");
+		//get logged in user 
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+	    //get logged in user username
+		String name = auth.getName(); 
+	    //get logged in user data
+		Users user = userService.findByUsername(name); 
+	    // redirects to givetakebook view
+	    ModelAndView mav = new ModelAndView("redirect:/givetakebook"); 
+	    //checks if user user exists
+	    if(user == null){ 
+	    	//prints out messege in console if user isn't initialized
+	    	System.out.println("Error: user is null"); 
+	    	mav.setViewName("redirect:/givetakebook?user");
 	    	return mav;
 	    }
-        //mav.addObject("takenBooks", user.getTakenBooks());
-	    
-	   /* if(user.isBookTaken(isbn)){
+	    //code for later controller update 
+	   /* if(user.isBookTaken(isbn)){   
 	    	return mav; //TODO show messege if user doesnt have book with that isbn number
 	    }
 	    for (Books book : bookRepository.findAll()) { 
@@ -57,17 +70,24 @@ public class GiveTakeBookController {
 	    
 		return mav;	//TODO show message if there isn't book with given isbn number
 	}
-	
-	@RequestMapping(value="/takebook", method = RequestMethod.POST)
-	public String giveBookByISBN(@RequestParam(value = "isbn") String isbn){
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String name = auth.getName(); 		//get logged in username
-	    Users user = userService.findByUsername(name);
-	    if(user == null){ //check if user exists
-	    	System.out.println("Error: user is null");
-	    	return "givetakebook";
+	// sets /takebook path. Called when using POST method
+	@RequestMapping(value="/takebook", method = RequestMethod.POST) 
+	// binds values isbn, taken from html file, to methods isbn parameter
+	public String giveBookByISBN(@RequestParam(value = "isbn") String isbn){ 
+		//get logged in user
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+	    //get logged in username
+		String name = auth.getName();
+	    //get logged in user data
+	    Users user = userService.findByUsername(name); 
+	    //check if user exists
+	    if(user == null){ 
+	    	//prints out messege in console if user isn't initialized
+	    	System.out.println("Error: user is null");  
+	    	return "redirect:/givetakebook";
 	    }
-		/*for (Books book : bookRepository.findAll()) {
+	    //code for later controller update
+		/*for (Books book : bookRepository.findAll()) {   
 			if(book.getIsbn() == isbn ){
 				if(book.getAvalability()=="true"){	 	//find book by isbn
 					return "givetakebook";  //TODO show message if book with given isbn number is taken
