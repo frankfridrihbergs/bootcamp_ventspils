@@ -37,14 +37,11 @@ public class GiveTakeBookController {
 	}
 	
 	@RequestMapping(value={"/givebook"}, method = RequestMethod.POST)
-	public ModelAndView takeBook(@RequestParam(value = "isbn") String isbn){
+	public ModelAndView takeBook(@RequestParam(value = "isbn") String isbn, @RequestParam(value = "username") String username){
 		System.out.println("giving book with isbn: " + isbn);
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String name = auth.getName(); //get logged in username
-	    Users user = userService.findByUsername(name);
-	    
-	    BookList bookList = new BookList();
-	    bookListRepository.setBookstatusFor("take", isbn, "dplasis");
+		System.out.println("giving book for user: " + username);
+		
+		bookListRepository.setBookstatusFor("owned", isbn, username); //change book status to "owned"
 	    
 	    System.out.println("Book has been given");
 	    
@@ -52,57 +49,22 @@ public class GiveTakeBookController {
 	    mav.addObject("books", bookListRepository.findByBookStatusIgnoreCase("ordered"));
 	    mav.addObject("books1", bookListRepository.findByBookStatusIgnoreCase("take"));
 	    mav.setViewName("redirect:/givetakebook");
-	    if(user == null){
-	    	System.out.println("Error: user is null");
-	    	return mav;
-	    }
-        //mav.addObject("takenBooks", user.getTakenBooks());
 	    
-	   /* if(user.isBookTaken(isbn)){
-	    	return mav; //TODO show messege if user doesnt have book with that isbn number
-	    }
-	    for (Books book : bookRepository.findAll()) { 
-			if(book.getIsbn() == isbn ){ 	//find book by isbn
-				book.setBookAsAvailable();
-				user.deleteTakenBook(isbn);
-				bookRepository.save(book);
-				userService.saveUser(user);
-				return "givetakebook";
-			}
-		}*/
 	    
 		return mav;	//TODO show message if there isn't book with given isbn number
 	}
 	
 	@RequestMapping(value="/takebook", method = RequestMethod.POST)
-	public ModelAndView giveBookByISBN(@RequestParam(value = "isbn") String isbn){
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String name = auth.getName(); 		//get logged in username
-	    Users user = userService.findByUsername(name);
-	    bookListRepository.setBookstatusFor("ordered", isbn, "dplasis");
-	    
+	public ModelAndView giveBookByISBN(@RequestParam(value = "isbn") String isbn, @RequestParam(value = "username") String username){
 	    System.out.println("Book has been taken");
-	    
+		//bookListRepository.setBookstatusFor("ordered", isbn, username); //change book status to "ordered"
+		bookListRepository.delete(bookListRepository.findByIsbnAndUsername(isbn, username)); //delete book from bookList
+		
 	    ModelAndView mav = new ModelAndView("redirect:/givetakebook");
 	    mav.addObject("books", bookListRepository.findByBookStatusIgnoreCase("ordered"));
 	    mav.addObject("books1", bookListRepository.findByBookStatusIgnoreCase("take"));
 	    mav.setViewName("redirect:/givetakebook");
-	    if(user == null){ //check if user exists
-	    	System.out.println("Error: user is null");
-	    	return mav;
-	    }
-		/*for (Books book : bookRepository.findAll()) {
-			if(book.getIsbn() == isbn ){
-				if(book.getAvalability()=="true"){	 	//find book by isbn
-					return "givetakebook";  //TODO show message if book with given isbn number is taken
-				}
-				book.setBookAsTaken();
-				user.addTakenBook(book);
-				bookRepository.save(book);
-				userService.saveUser(user);
-				return "givetakebook";
-			}
-		}*/
+	    
 		return mav; //TODO show message if there isn't book with given isbn number
 	}
 }
