@@ -29,11 +29,14 @@ public interface BookListRepository extends CrudRepository<BookList, Long> {
 	List<BookList> findByBookStatusIgnoreCase(String bookStatus);
 	BookList findByIsbnAndUsername(String isbn, String username);
 	
-	@Query(nativeQuery = true, value="select * from book_list where bl.username = :username")
-    BookList findByUsername(@Param("username") String username);
+	@Query(value="select bl from book_list bl where bl.username = :username")
+    List<BookList> findByUsername(@Param("username") String username);
     
     
-    @Query("select bl from book_list bl where return_date < :date")
-    List<BookList> returnAllDebt(@Param("date")Integer date);
+    @Query("select bl from book_list bl where bl.return_date < :date")
+    List<BookList> returnAllDebt(@Param("date")int date);
+    
+    @Query(nativeQuery = true, value="select * from book_list where username = :username and return_date <= :exp_time")
+    List<BookList> findByUsernameAndExpiredBook (@Param("username")String username, @Param("exp_time") long expiredTime);
 	
 }
