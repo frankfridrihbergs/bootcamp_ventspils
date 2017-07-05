@@ -46,6 +46,8 @@ public class GiveTakeBookController {
 	    BookList bookList = new BookList();
 	    bookListRepository.setBookstatusFor("take", isbn, "dplasis");
 	    
+	    System.out.println("Book has been given");
+	    
 	    ModelAndView mav = new ModelAndView("redirect:/givetakebook");
 	    mav.addObject("books", bookListRepository.findByBookStatusIgnoreCase("ordered"));
 	    mav.addObject("books1", bookListRepository.findByBookStatusIgnoreCase("take"));
@@ -78,6 +80,8 @@ public class GiveTakeBookController {
 	    String name = auth.getName(); 		//get logged in username
 	    Users user = userService.findByUsername(name);
 	    bookListRepository.setBookstatusFor("ordered", isbn, "dplasis");
+	    
+	    System.out.println("Book has been taken");
 	    
 	    ModelAndView mav = new ModelAndView("redirect:/givetakebook");
 	    mav.addObject("books", bookListRepository.findByBookStatusIgnoreCase("ordered"));
