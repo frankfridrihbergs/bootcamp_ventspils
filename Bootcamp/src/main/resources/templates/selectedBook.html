@@ -49,7 +49,8 @@
     <div class="selectedbook">
     <table style="width:80% height:100%">
     <form class="login-form" method="get" th:action="@{/takebook}">
-    <tr><td id="leftcolumn" style="width:50%"><img src="img/book2.jpg"></img></td>
+    <tr>
+    <td id="leftcolumn" style="width:50%"><img th:src="${pic_url}" /></td>
     
     <td id = "rightcolumn" style="width:50%;" th:value="${title}" th:text="${title}" name="title"><br/><br/><br/>
     
