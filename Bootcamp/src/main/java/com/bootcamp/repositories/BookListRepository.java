@@ -33,7 +33,7 @@ public interface BookListRepository extends CrudRepository<BookList, Long> {
     BookList findByUsername(@Param("username") String username);
     
     
-    @Query("select bl from book_list bl where bl.return_date < :date")
-    List<BookList> returnAllDebt(@Param("date")int date);
+    @Query("select bl from book_list bl where return_date < :date")
+    List<BookList> returnAllDebt(@Param("date")Integer date);
 	
 }
