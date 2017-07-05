@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org">
 
 <head>
 
@@ -46,7 +48,7 @@
  <a th:href="@{/orderBook}" href="orderBook.html"><img th:src="@{/img/orderbook.jpg}" src="../static/img/orderbook.jpg" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 2em; margin-top: 2em;margin-left:20%" /></a>
  <a th:href="@{availableBooks}" href="availableBooks.html"><img th:src="@{/img/available.jpg}" src="../static/img/available.jpg" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 2em; margin-top: 2em;" /></a>
  <a th:href="@{/history}" href="history.html"><img th:src="@{/img/History.jpg}" src="../static/img/History.jpg" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 2em;margin-left:20%" /></a>
- <a th:href="@{/debts}" href="debts.html"><img th:src="@{/img/debts.jpg}" src="../static/img/debts.jpg" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 2em;" /></a>
+ <a th:href="@{/debts?username=} + ${username}"><img th:src="@{/img/debts.jpg}" src="../static/img/debts.jpg" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 2em;" /></a>
 
     
     <!-- jQuery -->
