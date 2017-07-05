@@ -27,5 +27,13 @@ public interface BookListRepository extends CrudRepository<BookList, Long> {
 	void setBookstatusFor(@Param("bookStatus") String bookStatus, @Param("isbn") String isbn, @Param("username") String username);
 	
 	List<BookList> findByBookStatusIgnoreCase(String bookStatus);
+	BookList findByIsbnAndUsername(String isbn, String username);
+	
+	@Query(nativeQuery = true, value="select * from book_list where bl.username = :username")
+    BookList findByUsername(@Param("username") String username);
+    
+    
+    @Query("select bl from book_list bl where bl.return_date < :date")
+    List<BookList> returnAllDebt(@Param("date")int date);
 	
 }
