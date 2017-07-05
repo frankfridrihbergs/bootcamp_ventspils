@@ -69,13 +69,14 @@ public class BookList {
 		this.author = author;
 	}
 
-	public int getReturnDate() {
+	public int getReturn_date() {
 		return return_date;
 	}
 
-	public void setReturnDate(int return_date) {
+	public void setReturn_date(int return_date) {
 		this.return_date = return_date;
 	}
+
 	
 	
 	
