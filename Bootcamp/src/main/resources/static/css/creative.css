@@ -671,15 +671,28 @@ centredp{
   margin-bottom:4%
 
 }
+
 #reqlist{
 border:none;
+margin:auto;
+position:center;
+text-align:center;
 }
+#reqlist2{
+border:none;
+margin:auto;
+position:center;
+padding: 60px;
+text-align: center;
+}
+
 .choices p{
   margin-top:10px;
 }
 #holder td{
   padding-top:0px;
   margin-top:10px;
+  padding-bottom:20px;
 }
 #givebook{
   margin:5px;
@@ -688,6 +701,28 @@ border:none;
   margin-top:30px;
   margin-left:30%;
 }
+#slectedone{
+	
+	width:15%
+	height:25%;
+}
+
+#invisibleone{
+	background-color:none;
+	border:none;
+	color:none;
+	
+}
+.container img {
+position:absolute;
+right:0;
+top:0;
+}
+.container .table-div {
+position:relative; 
+padding-right:'images-width';
+}
+
 #holder tr{
   width:80%
 }
@@ -713,4 +748,64 @@ hr{
 
 #rightcolumn{
 	position:center;
+}
+
+#mainlogi{
+	border-radius:25px;
+	box-shadow: 7px 7px 7px black;
+}
+#searchdisplay{
+	margin-top:50px;
+	
+}
+#whiteform{
+	margin:auto;
+	width:50%;
+	background-color:white;
+	padding-top:30px;
+	padding-bottom:30px;
+	padding-left:20px;
+}
+#isbnfield{
+	text-align:center;
+}
+#centerfield{
+	text-align:center;
+	vertical-align:-3px;
+	
+}
+#sakums{
+	margin-top:60px;
+}
+
+.nexttobook{
+	background-color: rgb(0, 0, 0, 0.5);
+	margin-top:13%;
+	float:left;
+	width:30%;
+	height:30%;
+	padding-right:30px;
+	
+}
+.nexttobook input[type=submit]{
+	
+	margin-top:5%;
+	margin-left:10%;
+	text-align:left;
+	
+}
+
+.nexttobook #test{
+	margin-left:10%;
+	margin-top:10px;
+	text-align:left;
+	color:white;
+}
+
+
+#responsive{
+	margin-left:auto;
+	width:100%;
+	height:auto;
+	
 }
