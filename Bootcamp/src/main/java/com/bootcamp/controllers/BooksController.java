@@ -27,9 +27,10 @@ public class BooksController  {
 	 */
 	
 	@GetMapping(path="/add") // Map ONLY GET Requests
-	public @ResponseBody String addNewBook (@RequestParam String title
+	public String addNewBook (@RequestParam String title
 			, @RequestParam String isbn, @RequestParam String author,
-			@RequestParam float rating) {
+			@RequestParam float rating,@RequestParam int year,
+			@RequestParam int count,@RequestParam String picUrl) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 
@@ -44,17 +45,17 @@ public class BooksController  {
 		book.setPic_url("asdfg");*/
 		
 		book.setCondition("new");
-		book.setCount(1);
+		book.setCount(count);
 		book.setIsbn(isbn);
 		book.setRating(rating);
-		book.setYear(2012);
+		book.setYear(year);
 		book.setTitle(title);
 		book.setAuthor(author);
-		book.setPic_url("asdfg");
+		book.setPic_url(picUrl);
 		
 		bookRepository.save(book);
 
-		return "Saved";
+		return "manage";
 	}
 	
 	@GetMapping(path="/delete") 
