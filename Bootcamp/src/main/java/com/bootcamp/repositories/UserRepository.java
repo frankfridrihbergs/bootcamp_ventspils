@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bootcamp.models.Users;
 
-@Repository("userRepository")
+@Repository
 public interface UserRepository extends JpaRepository<Users, Long> {
 	Optional <Users> findByUsername(String username);
 }

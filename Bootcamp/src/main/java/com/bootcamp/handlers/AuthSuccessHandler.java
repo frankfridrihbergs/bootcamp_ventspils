@@ -61,7 +61,7 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
             if (grantedAuthority.getAuthority().equals("reader")) {
                 isReader = true;
                 break;
-            } else if (grantedAuthority.getAuthority().equals("employee")) {
+            } else if (grantedAuthority.getAuthority().equals("employee") || grantedAuthority.getAuthority().equals("admin")) {
                 isEmployee = true;
                 break;
             }
