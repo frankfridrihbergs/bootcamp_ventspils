@@ -52,6 +52,10 @@ public class SelectedBookController {
 	@RequestMapping(value={"/takebook"}, method = RequestMethod.GET)
 	public ModelAndView addBook(@RequestParam(value="title")String title){
 		
+		
+		ModelAndView modelAndView = new ModelAndView();
+		BookList bookList = new BookList();
+		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		
@@ -60,7 +64,22 @@ public class SelectedBookController {
 		//Users user = userRepository.findByUsername(username);
 		Books book = bookrepository.findFirstByTitleIgnoreCase(title);
 		
-		BookList bookList = new BookList();
+		int availableBookCount =  bookrepository.getCountofTheSameBooksByTitle(title);
+		int reservedBookCount = bookListRepository.getCountofReservedBooksByTitle(title);
+		
+		System.out.println("Reserved book count: " + reservedBookCount);
+		System.out.println("Available book count: " + availableBookCount);
+		
+		if(reservedBookCount < availableBookCount){
+			
+			modelAndView.addObject("availability", "order");
+			bookList.setBookStatus("ordered");
+			
+		}
+		else{
+			modelAndView.addObject("availability", "inque");
+			bookList.setBookStatus("que");
+		}
 		
 		bookList.setBookStatus("ordered");
 		bookList.setIsbn(book.getIsbn());
@@ -70,8 +89,6 @@ public class SelectedBookController {
 		
 		bookListRepository.save(bookList);
 		
-		ModelAndView modelAndView = new ModelAndView();
-		//modelAndView.addObject("book",bookrepository.findFirstByTitleIgnoreCase(title));
 		modelAndView.setViewName("redirect:/availableBooks"); //demo or JAVA
 		return modelAndView;
 	}
