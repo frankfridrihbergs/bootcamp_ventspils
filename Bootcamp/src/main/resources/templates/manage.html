@@ -38,11 +38,8 @@
 <body>
     <div id="logout">
 
-    <a th:href="@{/login}" href="login.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
-     border:none;margin-left:30px;margin-bottom:30px;padding-left:20px;color:white;padding-right:20px;padding-top:10px;padding-bottom:10px;margin-right:10px;margin-top:20px">LOGOUT</a>
-  <a th:href="@{/employeeIndex}" href="employeeIndex.html" style="margin-top:20px;max-width:80px;width:auto;background-color:black;
-     border:none;margin-left:30px;margin-bottom:30px;padding-left:20px;color:white;padding-right:20px;padding-top:10px;padding-bottom:10px;margin-right:10px;margin-top:20px;">HOME</a>
-
+   <a class="s3d twitter" th:href="@{/login}" href="login.html">LOGOUT</a>
+    <a  class="s3d twitter" th:href="@{/employeeIndex}" href="employeeIndex.html">HOME</a>
     </div>
 <center>
 <h2 id="up">MANAGE YOUR BOOKS</h2>
@@ -50,11 +47,11 @@
 
 
 <form id="form" method="get" th:action="@{/book/add}" >
-    <p style="margin-top:80px;" id="beforefields">TITLE</p>
+    <p style="margin-top:80px; margin-left:30%;" id="beforefields">TITLE</p>
 <input type="search" placeholder="TYPE TITLE HERE" name="title"/>
-<p id="beforefields">AUTHOR</p>
+<p id="beforefields" style="margin-left:30%;">AUTHOR</p>
 <input type="search" placeholder="TYPE AUTHOR HERE" name="author" />
-<p id="beforefields">SELECT RATING</p>
+<p id="beforefields" style="margin-left:30%;">SELECT RATING</p>
 <select id="white" name="rating">
   <option value="1">1 AND HIGHER</option>
   <option value="2">2 AND HIGHER</option>
@@ -69,13 +66,13 @@
 
 </select>
 
-<p id="beforefields">ISBN NUMBER</p>
+<p id="beforefields" style="margin-left:30%;">ISBN NUMBER</p>
 <input type="search" placeholder="TYPE ISBN NUMBER HERE" name="isbn" />
-<p id="beforefields">YEAR</p>
+<p id="beforefields" style="margin-left:30%;">YEAR</p>
 <input type="search" placeholder="TYPE ISBN NUMBER HERE" name="isbn" />
-<p id="beforefields">COUNT</p>
+<p id="beforefields" style="margin-left:30%;">COUNT</p>
 <input type="search" placeholder="TYPE ISBN NUMBER HERE" name="isbn" />
-<p id="beforefields">PICTURE URL</p>
+<p id="beforefields" style="margin-left:30%;">PICTURE URL</p>
 <input type="search" placeholder="TYPE ISBN NUMBER HERE" name="isbn" />
 
  <button title ="Fill in all spaces to add the book" type="submit" class="btn" style=" margin-top:40px;

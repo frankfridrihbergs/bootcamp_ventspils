@@ -62,10 +62,10 @@
 
             <div class="form">
                 <form class="login-form" action="#" th:action="@{/register}" th:object="${user}" method="post">
-                <input type="text" placeholder="Name" th:field="*{name}" /><span  th:if="${#fields.hasErrors('surname')}" th:errors="*{name}" >Name Error</span>
-                <input type="text" placeholder="Surname" th:field="*{surname}"/><span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Name Error</span>
-                <input type="Password" placeholder="password" th:field="*{password}" /><span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</span>
-                <input type="text" placeholder="Username" th:field="*{username}" /><span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</span>
+                <input type="text" placeholder="Name" th:field="*{name}" /><span style="font-color:red; color:red;" th:if="${#fields.hasErrors('surname')}" th:errors="*{name}" >Name Error</span>
+                <input type="text" placeholder="Surname" th:field="*{surname}"/><span style="font-color:red; color:red;" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Name Error</span>
+                <input type="Password" placeholder="password" th:field="*{password}" /><span style="font-color:red; color:red;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</span>
+                <input type="text" placeholder="Username" th:field="*{username}" /><span style="font-color:red; color:red;" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</span>
                 <div>Select Role : </div>
                 <select th:field="*{role}">
   					<option value="reader">Reader</option>
