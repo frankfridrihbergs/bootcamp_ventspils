@@ -25,6 +25,9 @@ public class BookList {
 	
 	@Column(name = "author")
 	private String author;
+	
+	@Column(name = "return_date")
+	private int return_date;
 
 	public String getUsername() {
 		return username;
@@ -65,6 +68,16 @@ public class BookList {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+
+	public int getReturn_date() {
+		return return_date;
+	}
+
+	public void setReturn_date(int return_date) {
+		this.return_date = return_date;
+	}
+
+	
 	
 	
 }

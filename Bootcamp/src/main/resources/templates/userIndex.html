@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org">
+
+    xmlns:sec="http://www.thymeleaf.org">
+
 
 <head>
 
@@ -50,6 +52,7 @@ xmlns:sec="http://www.thymeleaf.org">
  <a th:href="@{/mybooks}" href="mybooks.html"> <img id="mainlogi" th:src="@{/img/mybooks.jpg}" src="../static/img/mybooks.jpg" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 2em;margin-left:20%" /></a>
  <a th:href="@{/debts?username=} + ${username}" href="debts.html"> <img id="mainlogi" th:src="@{/img/debts.jpg}" src="../static/img/debts.jpg" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 2em;" /></a>
 </div>
+
     
     <!-- jQuery -->
     <script th:src="@{/vendor/jquery/jquery.min.js}" src="../static/vendor/jquery/jquery.min.js"></script>
