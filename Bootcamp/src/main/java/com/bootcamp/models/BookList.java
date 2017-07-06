@@ -1,5 +1,7 @@
 package com.bootcamp.models;
 
+import java.text.SimpleDateFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +29,7 @@ public class BookList {
 	private String author;
 	
 	@Column(name = "return_date")
-	private int return_date;
+	private long return_date;
 
 	public String getUsername() {
 		return username;
@@ -69,8 +71,8 @@ public class BookList {
 		this.author = author;
 	}
 
-	public int getReturn_date() {
-		return return_date;
+	public String getReturn_date() {
+		return new SimpleDateFormat("MM-dd-yyyy").format(return_date);
 	}
 
 	public void setReturn_date(int return_date) {

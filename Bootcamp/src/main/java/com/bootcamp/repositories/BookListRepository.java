@@ -39,4 +39,8 @@ public interface BookListRepository extends CrudRepository<BookList, Long> {
     @Query(nativeQuery = true, value="select * from book_list where username = :username and return_date <= :exp_time")
     List<BookList> findByUsernameAndExpiredBook (@Param("username")String username, @Param("exp_time") long expiredTime);
 	
+    @Transactional
+	@Modifying
+	@Query(nativeQuery = true, value="update book_list bl set bl.return_date = :return_date where bl.isbn = :isbn and bl.username = :username")
+	void setReturnDateFor(@Param("return_date") long return_date, @Param("isbn") String isbn, @Param("username") String username);
 }

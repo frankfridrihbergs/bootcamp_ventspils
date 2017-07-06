@@ -70,10 +70,9 @@
                     <td th:text="${sb.username}"></td>
                     <td th:text="${sb.title}"></td>
                     <td >
-                        
-                            <input style="display: none;" th:value="${sb.username}" name="username" />
-                            <input type="submit" th:value="${sb.isbn}" name="isbn"  />
-                        
+                            
+                            <input type="submit" th:value="${sb.isbn+','+sb.username}" 	th:placeholder="${sb.isbn}" name="isbn"  />
+                            
                     </td>
                 </tr>
                 
@@ -123,12 +122,14 @@
                  <tr>
                     <th>Name</th>
                     <th>Book</th>
+                    <th>Return date</th>
                     <th>Book isbn number</th>
                 
                 </tr>
                 <tr th:each="sb : ${books1}">
                     <td th:text="${sb.username}"></td>
                     <td th:text="${sb.title}"></td>
+                    <td th:text="${sb.return_date}"></td>
                     <td >
                         <form class="login-form" action="#" method="post" th:action="@{/takebook}">
                             <input style="display: none;" th:value="${sb.username}" name="username" />
