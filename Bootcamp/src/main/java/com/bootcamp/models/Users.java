@@ -12,18 +12,18 @@ import com.bootcamp.UniqueUsername;
 public class Users{
 	
 	@NotNull
-    @Size(min = 4, max = 40)
+    @Size(min = 3, max = 60)
     private String name;
     
     @NotNull
-    @Size(min = 4, max = 30)
+    @Size(min = 3, max = 60)
     private String surname;
     
     
     private String role;
     
     @NotNull
-    @Size(min = 8, max = 20)
+    @Size(min = 6, max = 20)
     private String password;
     
     @Id
@@ -71,6 +71,10 @@ public class Users{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public Users() {
+        // no-arg Jackson constructor
+    }
     
 }
 
