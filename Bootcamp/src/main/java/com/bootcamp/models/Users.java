@@ -11,9 +11,19 @@ import com.bootcamp.UniqueUsername;
 @Entity // This tells Hibernate to make a table out of this class
 public class Users{
 	
+	@NotNull
+    @Size(min = 4, max = 40)
     private String name;
+    
+    @NotNull
+    @Size(min = 4, max = 30)
     private String surname;
+    
+    
     private String role;
+    
+    @NotNull
+    @Size(min = 8, max = 20)
     private String password;
     
     @Id
