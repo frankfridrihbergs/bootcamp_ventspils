@@ -1,5 +1,7 @@
 package com.bootcamp.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ public class UserServiceImpl implements UsersService{
 	private UserRepository userRepository;
 	
 	@Override
-	public Users findByUsername(String username) {
+	public Optional <Users> findByUsername(String username) {
 		return userRepository.findByUsername(username);
 	}
 

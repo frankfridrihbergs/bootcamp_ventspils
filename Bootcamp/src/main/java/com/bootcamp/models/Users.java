@@ -2,18 +2,24 @@ package com.bootcamp.models;
 
 import javax.persistence.Entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.bootcamp.UniqueUsername;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Users{
-    @Id
+	
     private String name;
     private String surname;
     private String role;
     private String password;
+    
+    @Id
+    @NotNull
+    @UniqueUsername
+    @Size(min = 4, max = 20)
     private String username;
     
 	public String getUsername() {

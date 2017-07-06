@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
 
@@ -60,18 +61,20 @@
    
 
             <div class="form">
-                <form class="login-form" th:action="@{/save}" method="get">
-                <input type="text" placeholder="name" name="name"/>
-                <input type="password" placeholder="password" name="password"/>
-                <input type="text" placeholder="username" name="username"/>
-                <label>Select Role : </label>
-                <select name="role">
+                <form class="login-form" action="#" th:action="@{/register}" th:object="${user}" method="post">
+                <input type="text" placeholder="Name" th:field="*{name}" /><span  th:if="${#fields.hasErrors('surname')}" th:errors="*{name}" >Name Error</span>
+                <input type="text" placeholder="Surname" th:field="*{surname}"/><span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Name Error</span>
+                <input type="Password" placeholder="password" th:field="*{password}" /><span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</span>
+                <input type="text" placeholder="Username" th:field="*{username}" /><span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</span>
+                <div>Select Role : </div>
+                <select th:field="*{role}">
   					<option value="reader">Reader</option>
   					<option value="employee">Employee</option>
 				</select>
                 <button>create</button>
                 <!-- <p id="alr"><br> Already registered? </br> <a th:href="@{login}" href="login.html">Sign In</a></p> --> 
                 	<span th:text="${UserSaved}"></span>
+                
                 </form>
             </div>
         </div>
