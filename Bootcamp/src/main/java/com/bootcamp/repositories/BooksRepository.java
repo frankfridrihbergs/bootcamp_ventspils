@@ -16,6 +16,10 @@ import com.bootcamp.models.Books;
 @Repository
 public interface BooksRepository extends CrudRepository<Books, Long>  {
 	
+	
+	@Query(nativeQuery = true, value="select count(*) from books where title = :title")
+	int getCountofTheSameBooksByTitle(@Param("title")String title);
+	
 	@Query("select b from Books b where b.title like %:title% and b.author like %:author%" //Will return all books that match criteria (title,author,isbn,rating)
 			+ " and b.rating >= :rating and b.isbn like %:isbn%")
 	List<Books> getBooksByInfo(@Param("title") String title,@Param("author") String author,

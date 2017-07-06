@@ -38,5 +38,7 @@ public interface BookListRepository extends CrudRepository<BookList, Long> {
     
     @Query(nativeQuery = true, value="select * from book_list where username = :username and return_date <= :exp_time")
     List<BookList> findByUsernameAndExpiredBook (@Param("username")String username, @Param("exp_time") long expiredTime);
-	
+    
+    @Query(nativeQuery = true, value="select count(*) from book_list where title = :title")
+    int getCountofReservedBooksByTitle(@Param("title") String title);
 }
