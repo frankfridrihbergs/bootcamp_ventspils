@@ -26,9 +26,6 @@ public class Books {
 	@Column(name = "year")
 	private Integer year;
 	
-	@Column(name = "book_count")
-	private Integer count;
-	
 	@Column(name = "rating")
 	private float rating;
 	
@@ -75,27 +72,12 @@ public class Books {
 		this.year = year;
 	}
 
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(Integer count) {
-		this.count = count;
-	}
-
 	public float getRating() {
 		return rating;
 	}
 
 	public void setRating(float rating) {
-		if(rating < 0){
-			this.rating = 0;
-		}else if (rating > 10){
-			this.rating = 10;
-		}
-		else{
-			this.rating = rating;
-		}
+		this.rating = rating;
 	}
 
 	public String getPic_url() {
