@@ -7,4 +7,4 @@ jdk:
 before_install:
   - cd java
   
-ant test
+mvn test -B
