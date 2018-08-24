@@ -1,0 +1,4 @@
+mvn sonar:sonar \
+  -Dsonar.organization=frankfridrihbergs-github \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=eef497c4087069a25ff8e107f162cbaeb551d336
